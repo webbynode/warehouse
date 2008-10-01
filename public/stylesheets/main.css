@@ -1538,6 +1538,7 @@ button {
   display: none;
 }
 
+/**
 #changesets li.changeset {
   background: none;
   border: none;
@@ -1552,6 +1553,8 @@ button {
   background: none;
   border-right: none;
 }
+**/
+
 /* @end */
 
 /* @group Command Line */
