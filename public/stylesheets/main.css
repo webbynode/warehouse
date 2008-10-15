@@ -1538,23 +1538,6 @@ button {
   display: none;
 }
 
-/**
-#changesets li.changeset {
-  background: none;
-  border: none;
-  border-bottom: 1px solid #ccc;
-}
-
-#changesets .cs-log {
-  background: none;
-}
-
-#changesets .cs-meta {
-  background: none;
-  border-right: none;
-}
-**/
-
 /* @end */
 
 /* @group Command Line */
