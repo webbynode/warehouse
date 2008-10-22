@@ -33,7 +33,7 @@ module ApplicationHelper
   
 if Object.const_defined?(:Uv)
   def highlight_as(filename)
-    Uv.syntax_for_file(filename) || 'plain_text'
+    Uv.syntax_for_file(filename)
   end
   
   def highlight_syntax_in(node, show_blame=false)

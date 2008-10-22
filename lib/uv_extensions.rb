@@ -1,7 +1,7 @@
 module Uv
   class << self
     attr_reader   :syntax_index
-    attr_writer   :syntax_list
+    attr_writer   :syntax_list, :default_syntax
     attr_accessor :syntax_path
     attr_accessor :ignored_syntaxes
   end
@@ -43,6 +43,10 @@ module Uv
     if @syntax_index[ext].nil? && file_name =~ /[^\.]+\.(.*$)/
       ext = $1 if ext != $1 
     end
-    @syntax_index[ext]
+    @syntax_index[ext] || default_syntax
+  end
+
+  def self.default_syntax
+    @default_syntax ||= syntax_for_file("foo.txt")
   end
 end
