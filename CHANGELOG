@@ -1,3 +1,12 @@
+* 1.1.7
+* Fix directory (versus subdomain) operation
+* Remove domain check
+* Make svn logins the default (unless cookie setting overrides)
+* Remove non-existent Warehouse logo from footer
+* Put current warehouse version and link to github in footer
+* Add repo name to changesets summary
+* Fixed login button in login lightbox form
+
 * 1.1.6
 
 * Rake 0.8 compatibility fix
