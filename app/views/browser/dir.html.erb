@@ -85,7 +85,8 @@
   <h3>Activity in <%= @node.path.split('/').last || '~' %></h3>
   <ul id="recent-activity">
   <% @changesets.each do |changeset| -%>
-  <li><%= link_to %(<span class="author">#{h changeset.author}:</span> #{truncate(h(changeset.message), 50)}), hosted_url(:changeset, changeset), :title => "Changeset [#{changeset.revision}] @ #{changeset.changed_at.to_s(:short)}" %></li>
+  <%# mike hacked the next line to make the truncation work with ruby 1.8.7 %>
+  <li><%= link_to %(<span class="author">#{h changeset.author}:</span> #{changeset.message.slice(0,75) + (changeset.message.length > 75 ? '...' : '')}), hosted_url(:changeset, changeset), :title => "Changeset [#{changeset.revision}] @ #{changeset.changed_at.to_s(:short)}" %></li>
   <% end -%>
   <li id="all-history"><%= link_to "Complete history &raquo;", hosted_url(:history, :paths => params[:paths]) %></li>
  </ul>
