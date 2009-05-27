@@ -6,6 +6,7 @@
 * Put current warehouse version and link to github in footer
 * Add repo name to changesets summary
 * Fixed login button in login lightbox form
+* Fixed truncation issue in changeset viewing with Ruby 1.8.7
 
 * 1.1.6
 
