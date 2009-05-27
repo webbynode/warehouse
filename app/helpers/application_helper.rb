@@ -13,7 +13,10 @@ module ApplicationHelper
   end
   
   def use_login_form?
-    @use_login_form ||= !cookies['use_svn'].blank? && cookies['use_svn'].to_s == '1'
+  	#SVN logins are preferred to OpenID -- august
+    unless cookies['use_svn'].to_s == '0'
+    	return true
+    end
   end
   
   def word_for_change(change)
@@ -113,7 +116,9 @@ end
   end
   
   def avatar_for(user)
-    img = user && user.avatar? ? user.avatar_path : '/images/app/icons/member.png'
+    #more dirty hacking by mike
+    img = user && user.avatar? ? user.avatar_path : root_path+'images/app/icons/member.png'
+    #img = user && user.avatar? ? user.avatar_path : '/images/app/icons/member.png'
     tag('img', :src => img, :class => 'avatar', :alt => 'avatar')
   end
   
