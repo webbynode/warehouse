@@ -92,7 +92,6 @@ class PermissionsController < ApplicationController
     end
 
     def check_for_repository_or_show_repos
-      check_for_valid_domain
       return false if performed?
       return true if current_repository
       if logged_in? && repository_subdomain.blank?

@@ -42,32 +42,6 @@ context "Dashboard Controller" do
     @controller.send(:repository_subdomain).should == 'bar'
   end
 
-  specify "should get check valid domain for simple root domain" do
-    Warehouse.domain = @request.host = 'test.host'
-    get :index
-    @controller.send(:check_for_valid_domain).should == true
-  end
-
-  specify "should get check valid domain for simple subdomain" do
-    Warehouse.domain = 'test.host'
-    @request.host = 'foo.test.host'
-    get :index
-    @controller.send(:check_for_valid_domain).should == true
-  end
-
-  specify "should get check valid domain for complex root domain" do
-    Warehouse.domain = @request.host = 'foo.test.host'
-    get :index
-    @controller.send(:check_for_valid_domain).should == true
-  end
-
-  specify "should get check valid domain for complex subdomain" do
-    Warehouse.domain = 'foo.test.host'
-    @request.host = 'bar.foo.test.host'
-    get :index
-    @controller.send(:check_for_valid_domain).should == true
-  end
-
   specify "should get check valid domain for invalid domain" do
     Warehouse.domain = 'foo.test.host'
     @request.host = 'test.host'

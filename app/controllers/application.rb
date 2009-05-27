@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   
   around_filter :set_context
   
-  before_filter :check_for_valid_domain
   before_filter :check_for_repository
 
   expiring_attr_reader :current_user,       :retrieve_current_user
@@ -136,14 +135,6 @@ class ApplicationController < ActionController::Base
       false
     end
     
-    def check_for_valid_domain
-      if (Warehouse.domain.blank? && Repository.count > 0) || (!Warehouse.domain.blank? && request.host != Warehouse.domain && request.host.gsub(/^[\w-]+\./, '') != Warehouse.domain)
-        status_message :error, "Invalid domain '#{request.host}'.", 'shared/domain'
-      else
-        true
-      end
-    end
-
   if USE_REPO_PATHS
     def repository_subdomain
       @repository_subdomain ||= params.delete(:repo)

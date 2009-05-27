@@ -4,7 +4,6 @@ require 'repositories_controller'
 # Re-raise errors caught by the controller.
 class RepositoriesController
   def rescue_action(e) raise e end
-  def check_for_valid_domain() end
 end
 
 

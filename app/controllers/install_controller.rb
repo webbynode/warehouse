@@ -1,7 +1,6 @@
 require 'digest/sha1'
 class InstallController < ApplicationController
   @@install_path = File.join(RAILS_ROOT, 'config', 'installs')
-  skip_before_filter :check_for_valid_domain
   skip_before_filter :check_for_repository
   before_filter :check_installed, :except => [:test_install, :settings]
   
