@@ -134,7 +134,7 @@ class ApplicationController < ActionController::Base
       end
       false
     end
-    
+
   if USE_REPO_PATHS
     def repository_subdomain
       @repository_subdomain ||= params.delete(:repo)
@@ -152,7 +152,11 @@ class ApplicationController < ActionController::Base
       end
       repository ||= current_repository
       returning url_for(*args) do |path|
-        path.insert 0, "/#{repository.subdomain}" if repository
+        #For the record, mike d feels dirty about working with this hack
+        path.insert root_path.length, "#{repository.subdomain}/" if repository
+
+        #Original dirty hack
+        #path.insert 0, "/#{repository.subdomain}" if repository
       end
     end
   else
