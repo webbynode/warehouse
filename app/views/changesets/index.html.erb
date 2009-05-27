@@ -29,7 +29,10 @@
     <div class="cs-meta">
       <%= avatar_for(user) %>
       <p>
-        <span class="change-number"><%= link_to(changeset.revision, hosted_url(changeset.repository, :changeset, :id => changeset.revision)) %></span>
+        <span class="change-number"><%= link_to(changeset.revision, hosted_url(changeset.repository, :changeset, :id => changeset.revision), :style=>"margin-bottom:0px !important") %></span>
+        <% unless current_repository%> <%# mike wants each changeset to show its repository name unless we're in a particular repo %>
+           <small style="padding:none; margin:0px"><%= link_to changeset.repository.name, hosted_url(changeset.repository, :browser) %></small>
+        <% end %>
       </p>
     </div>
     <div class="cs-log clearfix">      
